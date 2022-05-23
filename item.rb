@@ -28,4 +28,12 @@ class Item
   def add_label(label)
     @label << label
   end
+
+  def can_be_archived?
+    (Time.now.year - @publish_date.year) > 10
+  end
+
+  def move_to_archive?
+    @archived = true if can_be_archived?
+  end
 end
