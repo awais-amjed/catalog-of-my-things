@@ -13,4 +13,8 @@ class Genre
     @items << item unless @items.include?(item)
     item.genre = self
   end
+
+  def display
+    puts @name
+  end
 end
