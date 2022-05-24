@@ -63,7 +63,6 @@ class App
     end
   end
 
-
   def preserve_files
     save_data_as_json(@books, 'books')
     save_data_as_json(@labels, 'labels')

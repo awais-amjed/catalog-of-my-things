@@ -6,7 +6,6 @@ class Item
     @id = id || rand(1...1000)
     @publish_date = publish_date
     @archived = archived
-
     @genre = []
     @source = []
     @author = []
@@ -25,8 +24,9 @@ class Item
     @author << author
   end
 
-  def add_label(label)
-    @label << label
+  def label=(label)
+    @label = label
+    label.add_item(self)
   end
 
   def can_be_archived?

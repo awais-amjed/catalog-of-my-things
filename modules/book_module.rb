@@ -1,6 +1,6 @@
 module BookModule
   def capture_input(request_text)
-    puts "#{request_text}"
+    puts request_text.to_s
     gets.chomp
   end
 
