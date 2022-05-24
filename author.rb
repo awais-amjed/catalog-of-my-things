@@ -10,7 +10,7 @@ class Author
   end
 
   def add_item(item)
-    item.author.push(self)
+    item.author = self
     @items.push(item) unless @items.include?(item)
   end
 

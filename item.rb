@@ -8,7 +8,6 @@ class Item
     @archived = archived
     @genre = []
     @source = []
-    @author = []
     @label = []
   end
 
