@@ -17,4 +17,17 @@ class Genre
   def display
     puts @name
   end
+
+  def to_json(*_args)
+    {
+      id: @id,
+      name: @name,
+      items: @items.map do |item|
+        {
+          id: item.id,
+          class_name: item.class
+        }
+      end
+    }.to_json
+  end
 end
