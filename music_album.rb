@@ -1,4 +1,5 @@
 require_relative './item'
+require_relative './date_handler'
 
 class MusicAlbum < Item
   attr_accessor :on_spotify
@@ -11,5 +12,15 @@ class MusicAlbum < Item
 
   def can_be_archived?
     super && @on_spotify
+  end
+
+  def display
+    puts "\n<--- Music Album ##{id} --->
+        Published on #{DateHandler.to_string(@publish_date)}
+        Author: #{@author.first_name} #{@author.last_name}
+        Label: #{@label.title} | #{@label.color}
+        Genre: #{@genre.name}
+        Source: #{@source.name}
+        #{'Not ' unless @on_spotify}Available on Spotify"
   end
 end
