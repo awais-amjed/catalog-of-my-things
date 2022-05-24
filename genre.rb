@@ -14,7 +14,7 @@ class Genre
     item.genre = self
   end
 
-  def display
+  def show
     puts @name
   end
 
