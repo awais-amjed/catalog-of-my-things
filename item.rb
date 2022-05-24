@@ -7,14 +7,14 @@ class Item
     @publish_date = publish_date
     @archived = archived
 
-    @genre = []
     @source = []
     @author = []
     @label = []
   end
 
-  def add_genre(genre)
-    @genre << genre
+  def genre=(genre)
+    @genre = genre
+    @genre.add_item(self)
   end
 
   def add_source(source)
