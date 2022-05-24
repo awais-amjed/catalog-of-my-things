@@ -23,4 +23,17 @@ class MusicAlbum < Item
         Source: #{@source.name}
         #{'Not ' unless @on_spotify}Available on Spotify"
   end
+
+  def to_json(*_args)
+    {
+      id: @id,
+      publish_date: @publish_date,
+      author: @author,
+      label: @label,
+      genre: @genre.id,
+      source: @source,
+      archived: @archived,
+      on_spotify: @on_spotify
+    }.to_json
+  end
 end
