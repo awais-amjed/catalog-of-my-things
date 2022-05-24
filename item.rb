@@ -6,6 +6,7 @@ class Item
     @id = id || Random.rand(1..1_000_000)
     @publish_date = publish_date
     @archived = archived
+
     @genre = []
     @source = []
     @label = []
