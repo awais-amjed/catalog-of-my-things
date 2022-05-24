@@ -1,4 +1,4 @@
-require_relative './classes/item.rb'
+require_relative 'item.rb'
 class Book < Item
   attr_accessor :publisher, :cover_state
 
