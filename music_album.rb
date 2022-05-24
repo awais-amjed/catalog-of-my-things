@@ -28,10 +28,10 @@ class MusicAlbum < Item
     {
       id: @id,
       publish_date: @publish_date,
-      author: @author,
-      label: @label,
+      author: @author.id,
+      label: @label.id,
       genre: @genre.id,
-      source: @source,
+      source: @source.id,
       archived: @archived,
       on_spotify: @on_spotify
     }.to_json
