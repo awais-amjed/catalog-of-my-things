@@ -1,6 +1,6 @@
 require_relative './item'
 class Label
-  attr_accessor :title, :color
+  attr_accessor :title, :color, :label
   attr_reader :items, :id
 
   def initialise(_id, title, color, _items)
@@ -10,8 +10,8 @@ class Label
     @items = []
   end
 
-  def add_item(new_item)
-    @items << new_item
-    new_item.label == self
+  def add_item(item)
+    @items << item
+    item.add_label(self)
   end
 end

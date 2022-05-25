@@ -24,9 +24,9 @@ class Item
     @author << author
   end
 
-  def label=(label)
+  def add_label(label)
     @label = label
-    label.add_item(self)
+    label.items << self
   end
 
   def can_be_archived?
