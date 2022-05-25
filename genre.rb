@@ -14,10 +14,6 @@ class Genre
     item.genre = self
   end
 
-  def show
-    puts @name
-  end
-
   def to_json(*_args)
     {
       id: @id,

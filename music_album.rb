@@ -14,14 +14,14 @@ class MusicAlbum < Item
     super && @on_spotify
   end
 
-  def display
-    puts "\n<--- Music Album ##{id} --->
-        Published on #{DateHandler.to_string(@publish_date)}
-        Author: #{@author.first_name} #{@author.last_name}
-        Label: #{@label.title} | #{@label.color}
-        Genre: #{@genre.name}
-        Source: #{@source.name}
-        #{'Not ' unless @on_spotify}Available on Spotify"
+  def show
+    puts "\n<--- Music Album ##{id} --->"
+    puts "Published on #{DateHandler.to_string(@publish_date)}"
+    puts "Author: #{@author.first_name} #{@author.last_name}" unless @author.nil?
+    puts "Label: #{@label.title} | #{@label.color}" unless @label.nil?
+    puts "Genre: #{@genre.name}" unless @genre.nil?
+    puts "Source: #{@source.name}" unless @source.nil?
+    puts "#{'Not ' unless @on_spotify}Available on Spotify"
   end
 
   def to_json(*_args)
