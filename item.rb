@@ -1,19 +1,14 @@
-require_relative './date_handler'
-class Item
-  attr_accessor :publish_date, :author
-  attr_reader :id, :genre, :source, :label, :archived
 
-  def initialize(publish_date:, id: nil, archived: false)
-    @id = id || Random.rand(1...1000)
+class Item
+  attr_accessor :publish_date, :genre
+  attr_reader :id, :source, :author, :label, :archived
+
+  def initialize(publish_date, id = nil, archived: false)
+    @id = id || rand(1...1000)
     @publish_date = DateHandler.from_string(publish_date)
     @archived = archived
-    @genre = []
     @source = []
     @label = []
-  end
-
-  def add_genre(genre)
-    @genre << genre
   end
 
   def add_source(source)

@@ -1,5 +1,7 @@
 require 'fileutils'
 require 'json'
+require_relative './music_album'
+require_relative './genre'
 
 module DataStorageHandler
   def self.save_data(file_name, data)
