@@ -34,4 +34,18 @@ class MusicAlbumManager
   def list_all_music_albums
     @music_albums.each(&:show)
   end
+
+  def save_music_albums
+    DataStorageHandler.save_data(@file_name, @music_albums)
+  end
+
+  def load_music_albums
+    data = DataStorageHandler.read_data(@file_name)
+    data.each do |album|
+      @music_albums << MusicAlbum.new(album['publish_date'],
+                                      album['id'],
+                                      on_spotify: album['on_spotify'],
+                                      archived: album['archived'])
+    end
+  end
 end
