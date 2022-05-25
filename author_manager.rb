@@ -1,5 +1,6 @@
 require 'json'
 require_relative './author'
+require_relative './data_storage_handler'
 class AuthorManager
   attr_reader :authors
 
@@ -24,7 +25,7 @@ class AuthorManager
   end
 
   def store_authors
-    File.write('data/author.json', JSON.generate(@authors))
+    DataStorageHandler.save_data('author', @authors)
   end
 
   # Items should be an array of objects

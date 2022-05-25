@@ -1,6 +1,8 @@
 require_relative 'game'
 require_relative 'author'
 require 'json'
+require_relative './data_storage_handler'
+
 class GameManager
   attr_accessor :games
 
@@ -29,7 +31,7 @@ class GameManager
   end
 
   def store_games
-    File.write('data/games.json', JSON.generate(@games))
+    DataStorageHandler.save_data('game', @games)
   end
 
   def list_games
