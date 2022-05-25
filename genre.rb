@@ -18,11 +18,7 @@ class Genre
     {
       id: @id,
       name: @name,
-      items: @items.map do |item|
-        {
-          id: item.id
-        }
-      end
+      items: @items.map(&:id)
     }.to_json
   end
 end
