@@ -13,7 +13,7 @@ class MusicAlbumManager
     print 'Enter the publish date of Music Album (yyyy-mm-dd): '
     publish_date = gets.chomp
     begin
-      publish_date = DateHandler.from_string(publish_date)
+      DateHandler.from_string(publish_date)
     rescue ArgumentError
       puts 'Invalid Date! Try again'
       add_music_album(genre_manager)
