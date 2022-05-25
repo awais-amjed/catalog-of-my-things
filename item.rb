@@ -1,10 +1,12 @@
+require_relative 'date_handler'
+
 class Item
   attr_accessor :publish_date
   attr_reader :id, :genre, :source, :author, :label, :archived
 
   def initialize(publish_date, id = nil, archived: false)
     @id = id || rand(1...1000)
-    @publish_date = publish_date
+    @publish_date = DateHandler.to_string(publish_date)
     @archived = archived
 
     @source = []
