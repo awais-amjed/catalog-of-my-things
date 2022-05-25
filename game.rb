@@ -1,13 +1,13 @@
 require_relative 'item'
 
 class Game < Item
-  attr_accessor :multi_player, :last_played_at, :publish_date, :archived
+  attr_accessor :multi_player, :last_played_at
 
-  def initialize(multi_player:, last_played_at:, publish_date:, archived: false)
+  def initialize(multi_player:, last_played_at:, publish_date:, id: nil, archived: false)
     @multi_player = multi_player
     @last_played_at = last_played_at
     @publish_date = publish_date
-    super(id: id, publish_date: publish_date, archived: archived)
+    super(publish_date: publish_date, id: id, archived: archived)
   end
 
   def can_be_archived
@@ -17,7 +17,7 @@ class Game < Item
 
   def to_json(*_args)
     {
-      id: id,
+      id: @id,
       multi_player: @multi_player,
       last_played_at: @last_played_at,
       publish_date: @publish_date,

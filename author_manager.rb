@@ -1,7 +1,7 @@
 require 'json'
-require_relative 'author'
+require_relative './author'
 class AuthorManager
-  attr_accessor :authors
+  attr_reader :authors
 
   def initialize
     @authors = []
@@ -24,10 +24,19 @@ class AuthorManager
   end
 
   def store_authors
-    File.write('data/author.json', JSON.pretty_generate(@authors), mode: 'w')
+    File.write('data/author.json', JSON.generate(@authors))
   end
 
-  def read_author
-    JSON.parse(File.read('data/author.json')) if File.exist?('data/author.json')
+  # Items should be an array of objects
+  def read_author(items)
+    authors = JSON.parse(File.read('data/author.json')) if File.exist?('data/author.json')
+    @authors = authors.map do |writer|
+      author = Author.new(writer['first_name'], writer['last_name'])
+      write['items'].map do |item|
+        find_item = items.find { |i| i.id == item }
+        author.add_item(find_item)
+      end
+      author
+    end
   end
 end

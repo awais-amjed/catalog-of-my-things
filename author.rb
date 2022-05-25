@@ -1,12 +1,12 @@
 class Author
-  attr_reader :id
-  attr_accessor :first_name, :last_name, :items
+  attr_reader :id, :items
+  attr_accessor :first_name, :last_name
 
   def initialize(first_name, last_name)
     @first_name = first_name
     @last_name = last_name
     @items = []
-    @id = Random.rand(1..1_000_000)
+    @id = id || Random.rand
   end
 
   def add_item(item)
@@ -15,10 +15,11 @@ class Author
   end
 
   def to_json(*_args)
+    i = @items.map(&:id)
     {
       id: @id,
       name: "#{@first_name} #{@last_name}",
-      items: @items
+      items: i
     }.to_json
   end
 end

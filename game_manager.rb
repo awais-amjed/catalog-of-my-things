@@ -16,16 +16,20 @@ class GameManager
     puts 'Publish date (yyyy-mm-dd)'
     publish_date = gets.chomp
     game = Game.new(multi_player: multi_player, last_played_at: last_played_at, publish_date: publish_date)
-    game.move_to_archive if game.archived
+    game.move_to_archive? if game.can_be_archived?
     puts 'Would you like to add an author to the agame? [Y/N]?'
     answer = gets.chomp
     author_manager.add_author if answer.downcase == 'y'
-    @games.push(game) unless @games.include?(game)
-    puts 'Game added'
+    if @games.include?(game)
+      puts 'Game already exists'
+    else
+      @games.push(game)
+      puts 'Game added'
+    end
   end
 
   def store_games
-    File.write('data/games.json', JSON.pretty_generate(@games), mode: 'w')
+    File.write('data/games.json', JSON.generate(@games))
   end
 
   def list_games
@@ -35,12 +39,9 @@ class GameManager
   end
 
   def read_games
-    @games = JSON.parse(File.read('data/games.json')) if File.exist?('data/games.json')
-  end
-
-  def to_json(*_args)
-    {
-      games: @games
-    }.to_json
+    games = JSON.parse(File.read('data/games.json')) if File.exist?('data/games.json')
+    @games = games.map do |game|
+      Game.new(game['multi_player'], game['last_played_at'], game['publish_date'], game['id'], game['archived'])
+    end
   end
 end
