@@ -6,7 +6,7 @@ class Item
 
   def initialize(publish_date, id = nil, archived: false)
     @id = id || rand(1...1000)
-    @publish_date = DateHandler.to_string(publish_date)
+    @publish_date = DateHandler.from_string(publish_date)
     @archived = archived
 
     @source = []
