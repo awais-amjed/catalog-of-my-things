@@ -18,7 +18,7 @@ describe Genre do
 
   context 'Given a Genre, Calling add_item function with an item' do
     it 'should return add the item to items list and update the genre of item' do
-      item = MusicAlbum.new(DateHandler.from_string('2022-01-01'))
+      item = MusicAlbum.new('2022-01-01')
       @genre.add_item(item)
 
       expect(@genre.items).to_not be_empty
