@@ -1,5 +1,5 @@
-require_relative 'data_storage_handler'
-require_relative 'genre'
+require_relative '../modules/data_storage_handler'
+require_relative '../classes/genre'
 
 class GenreManager
   attr_reader :genres

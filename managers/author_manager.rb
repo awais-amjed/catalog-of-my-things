@@ -1,6 +1,6 @@
 require 'json'
-require_relative './author'
-require_relative './data_storage_handler'
+require_relative '../classes/author'
+require_relative '../modules/data_storage_handler'
 class AuthorManager
   attr_reader :authors
 

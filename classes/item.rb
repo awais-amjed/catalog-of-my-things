@@ -1,4 +1,4 @@
-require_relative './date_handler'
+require_relative '../modules/date_handler'
 class Item
   attr_accessor :publish_date, :genre, :author, :source, :label
   attr_reader :id, :archived

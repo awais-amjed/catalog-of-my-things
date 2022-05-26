@@ -1,5 +1,5 @@
-require_relative 'data_storage_handler'
-require_relative 'label'
+require_relative '../modules/data_storage_handler'
+require_relative '../classes/label'
 
 class LabelManager
   attr_reader :labels

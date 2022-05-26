@@ -1,5 +1,5 @@
-require_relative 'date_handler'
-require_relative 'music_album'
+require_relative '../modules/date_handler'
+require_relative '../classes/music_album'
 
 class MusicAlbumManager
   attr_reader :music_albums

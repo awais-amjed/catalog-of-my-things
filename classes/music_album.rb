@@ -1,5 +1,5 @@
 require_relative './item'
-require_relative './date_handler'
+require_relative '../modules/date_handler'
 
 class MusicAlbum < Item
   attr_accessor :on_spotify

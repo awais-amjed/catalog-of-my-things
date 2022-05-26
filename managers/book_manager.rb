@@ -1,5 +1,5 @@
-require_relative 'book'
-require_relative 'date_handler'
+require_relative '../classes/book'
+require_relative '../modules/date_handler'
 
 class BookManager
   attr_reader :books
