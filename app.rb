@@ -57,16 +57,16 @@ class App
     puts 'Welcome to Catalog of my Things'
     loop do
       puts "\n1 - List all Books
-          2 - List all Music Albums
-          3 - List all Games
-          4 - List all Genres
-          5 - List all Labels
-          6 - List all Authors
-          7 - Add a book
-          8 - Add a Music Album
-          9 - Add a Game
-          10 - Exit"
-      print 'Your Choice: '
+2 - List all Music Albums
+3 - List all Games
+4 - List all Genres
+5 - List all Labels
+6 - List all Authors
+7 - Add a book
+8 - Add a Music Album
+9 - Add a Game
+10 - Exit"
+      print "\nYour Choice: "
       choice = gets.chomp
       break if choice == '10'
 

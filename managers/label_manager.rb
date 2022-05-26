@@ -13,7 +13,7 @@ class LabelManager
   end
 
   def select_label
-    print 'Select a Label by number: '
+    puts 'Select a Label by number: '
     list_all_labels(show_index: true)
     puts "#{@labels.length + 1}) Add a label"
     print "\nYour choice: "
@@ -24,7 +24,7 @@ class LabelManager
     end
     return add_label if choice == @labels.length + 1
 
-    @labels[choice]
+    @labels[choice - 1]
   end
 
   def add_label

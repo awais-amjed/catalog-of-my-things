@@ -13,7 +13,7 @@ class GenreManager
   end
 
   def select_genre
-    print 'Select a Genre by number: '
+    puts 'Select a Genre by number: '
     list_all_genres(show_index: true)
     puts "#{@genres.length + 1}) Add a genre"
     print "\nYour choice: "
@@ -24,7 +24,7 @@ class GenreManager
     end
     return add_genre if choice == @genres.length + 1
 
-    @genres[choice]
+    @genres[choice - 1]
   end
 
   def add_genre

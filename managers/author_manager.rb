@@ -13,18 +13,18 @@ class AuthorManager
   end
 
   def select_author
-    print 'Select an Author by number: '
+    puts 'Select an Author by number: '
     list_authors(show_index: true)
     puts "#{@authors.length + 1}) Add an Author"
     print "\nYour choice: "
     choice = gets.chomp.to_i
-    if choice.zero? || choice > @genres.length + 1
+    if choice.zero? || choice > @authors.length + 1
       puts 'Invalid choice! Try again'
       select_author
     end
-    return add_author if choice == @genres.length + 1
+    return add_author if choice == @authors.length + 1
 
-    @authors[choice]
+    @authors[choice - 1]
   end
 
   def add_author
@@ -38,7 +38,7 @@ class AuthorManager
   end
 
   def list_authors(show_index: false)
-    index = 0
+    index = 1
     @authors.each do |author|
       puts "#{"#{index}) " if show_index}#{author.to_json}"
       index += 1
