@@ -7,12 +7,31 @@ require_relative 'managers/music_album_manager'
 
 class App
   def initialize
-    @genre_manager = GenreManager.new
-    @book_manager = BookManager.new
-    @author_manager = AuthorManager.new
-    @game_manager = GameManager.new
-    @label_manager = LabelManager.new
     @music_album_manager = MusicAlbumManager.new
+    @book_manager = BookManager.new
+    @game_manager = GameManager.new
+
+    @items = []
+    @items.push(*@music_album_manager.music_albums)
+    @items.push(*@book_manager.books)
+    @items.push(*@game_manager.games)
+
+    @genre_manager = GenreManager.new(@items)
+    @author_manager = AuthorManager.new(@items)
+    @label_manager = LabelManager.new(@items)
+  end
+
+  def handle_add_methods(choice)
+    case choice
+    when '7'
+      @book_manager.add_book(@label_manager)
+    when '8'
+      @music_album_manager.add_music_album(@genre_manager)
+    when '9'
+      @game_manager.add_game(@author_manager)
+    else
+      puts '<-- Wrong Choice! Try again -->'
+    end
   end
 
   def handle_choice(choice)
@@ -29,14 +48,8 @@ class App
       @label_manager.list_all_labels
     when '6'
       @author_manager.list_authors
-    when '7'
-      @book_manager.add_book(@label_manager)
-    when '8'
-      @music_album_manager.add_music_album(@genre_manager)
-    when '9'
-      @game_manager.add_game(@author_manager)
     else
-      puts '<-- Wrong Choice! Try again -->'
+      handle_add_methods(choice)
     end
   end
 

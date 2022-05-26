@@ -4,7 +4,8 @@ require_relative '../classes/label'
 class LabelManager
   attr_reader :labels
 
-  def initialize
+  def initialize(all_items)
+    @all_items = all_items
     @labels = []
     @file_name = 'labels'
   end
@@ -47,12 +48,12 @@ class LabelManager
     DataStorageHandler.save_data(@file_name, @labels)
   end
 
-  def load_labels(all_items)
+  def load_labels
     data = DataStorageHandler.read_data(@file_name)
     data.each do |label|
       new_label = Label.new(label['title'], label['color'], id: label['id'])
       label['items'].each do |id|
-        found = all_items.detect { |item| item.id == id }
+        found = @all_items.detect { |item| item.id == id }
         new_label.add_item(found)
       end
       @labels << new_label

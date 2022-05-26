@@ -4,7 +4,8 @@ require_relative '../classes/genre'
 class GenreManager
   attr_reader :genres
 
-  def initialize
+  def initialize(all_items)
+    @all_items = all_items
     @genres = []
     @file_name = 'genres'
   end
@@ -45,12 +46,12 @@ class GenreManager
     DataStorageHandler.save_data(@file_name, @genres)
   end
 
-  def load_genres(all_items)
+  def load_genres
     data = DataStorageHandler.read_data(@file_name)
     data.each do |genre|
       new_genre = Genre.new(genre['name'], id: genre['id'])
       genre['items'].each do |id|
-        found = all_items.detect { |item| item.id == id }
+        found = @all_items.detect { |item| item.id == id }
         new_genre.add_item(found)
       end
       @genres << new_genre
