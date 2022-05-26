@@ -27,7 +27,7 @@ class MusicAlbumManager
     genre.add_item(new_music_album)
 
     # TODO: Add the other properties here
-    new_music_album.move_to_archive?
+    new_music_album.move_to_archive
     @music_albums << new_music_album
   end
 

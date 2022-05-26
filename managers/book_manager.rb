@@ -28,7 +28,7 @@ class BookManager
     label.add_item(new_book)
 
     # TODO: Add the other properties here
-    new_book.move_to_archive?
+    new_book.move_to_archive
     @books << new_book
   end
 
