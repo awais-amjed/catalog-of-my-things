@@ -1,4 +1,4 @@
-require_relative './date_handler'
+require_relative '../modules/date_handler'
 class Item
   attr_accessor :publish_date, :genre, :author, :source, :label
   attr_reader :id, :archived
@@ -13,7 +13,7 @@ class Item
     (Time.now.year - @publish_date.year) > 10
   end
 
-  def move_to_archive?
+  def move_to_archive
     @archived = true if can_be_archived?
   end
 end

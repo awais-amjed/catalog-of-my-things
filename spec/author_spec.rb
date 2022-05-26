@@ -1,5 +1,5 @@
-require_relative '../author'
-require_relative '../game'
+require_relative '../classes/author'
+require_relative '../classes/game'
 
 describe Author do
   it 'should initialize with an instance of author' do

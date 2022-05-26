@@ -17,7 +17,8 @@ class Author
   def to_json(*_args)
     {
       id: @id,
-      name: "#{@first_name} #{@last_name}",
+      first_name: first_name,
+      last_name: last_name,
       items: @items.map(&:id)
     }.to_json
   end

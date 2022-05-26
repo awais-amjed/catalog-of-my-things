@@ -1,5 +1,6 @@
-require_relative 'date_handler'
-require_relative 'music_album'
+require_relative '../modules/date_handler'
+require_relative '../classes/music_album'
+require_relative '../modules/input_module'
 
 class MusicAlbumManager
   attr_reader :music_albums
@@ -7,28 +8,31 @@ class MusicAlbumManager
   def initialize
     @music_albums = []
     @file_name = 'music_album'
+
+    load_music_albums
   end
 
-  def add_music_album(genre_manager)
+  def add_music_album(genre_manager, label_manager, author_manager)
     print 'Enter the publish date of Music Album (yyyy-mm-dd): '
     publish_date = gets.chomp
     begin
       DateHandler.from_string(publish_date)
     rescue ArgumentError
       puts 'Invalid Date! Try again'
-      add_music_album(genre_manager)
+      add_music_album(genre_manager, label_manager, author_manager)
     end
-    genre = genre_manager.select_genre
-    # TODO: Add selection of other properties (label, source and author)
+    genre, label, author = InputModule.get_genre_label_author(genre_manager, label_manager, author_manager)
     print 'Is the Music Album available on Spotify? (Y/N): '
     on_spotify = gets.chomp
-    add_music_album(genre_manager) unless %w[y n].include?(on_spotify.downcase)
+    add_music_album(genre_manager, label_manager, author_manager) unless %w[y n].include?(on_spotify.downcase)
     new_music_album = MusicAlbum.new(publish_date, on_spotify: on_spotify.downcase == 'y')
     genre.add_item(new_music_album)
+    label.add_item(new_music_album)
+    author.add_item(new_music_album)
 
-    # TODO: Add the other properties here
-    new_music_album.move_to_archive?
+    new_music_album.move_to_archive
     @music_albums << new_music_album
+    puts 'Music Album added Successfully!'
   end
 
   def list_all_music_albums

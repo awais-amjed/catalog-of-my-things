@@ -15,6 +15,17 @@ class Game < Item
     super && (@last_played_at.slice(0, 3).to_i - current_date.year) > 2
   end
 
+  def show
+    puts "\n<--- Game ##{id} --->"
+    puts "Published on #{DateHandler.to_string(@publish_date)}"
+    puts "Last Played at #{@last_played_at}"
+    puts "Author: #{@author.first_name} #{@author.last_name}" unless @author.nil?
+    puts "Label: #{@label.title} | #{@label.color}" unless @label.nil?
+    puts "Genre: #{@genre.name}" unless @genre.nil?
+    puts "Source: #{@source.name}" unless @source.nil?
+    puts "Multiplayer mode#{' not' unless @multi_player.downcase == 'y'} available"
+  end
+
   def to_json(*_args)
     {
       id: @id,

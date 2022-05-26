@@ -1,27 +1,30 @@
-require_relative 'data_storage_handler'
-require_relative 'label'
+require_relative '../modules/data_storage_handler'
+require_relative '../classes/label'
 
 class LabelManager
   attr_reader :labels
 
-  def initialize
+  def initialize(all_items)
+    @all_items = all_items
     @labels = []
     @file_name = 'labels'
+
+    load_labels
   end
 
   def select_label
-    print 'Select a Label by number: '
+    puts "\nSelect a Label by number: "
     list_all_labels(show_index: true)
     puts "#{@labels.length + 1}) Add a label"
     print "\nYour choice: "
     choice = gets.chomp.to_i
     if choice.zero? || choice > @labels.length + 1
       puts 'Invalid choice! Try again'
-      select_label
+      return select_label
     end
     return add_label if choice == @labels.length + 1
 
-    @labels[choice]
+    @labels[choice - 1]
   end
 
   def add_label
@@ -47,13 +50,13 @@ class LabelManager
     DataStorageHandler.save_data(@file_name, @labels)
   end
 
-  def load_labels(all_items)
+  def load_labels
     data = DataStorageHandler.read_data(@file_name)
     data.each do |label|
       new_label = Label.new(label['title'], label['color'], id: label['id'])
       label['items'].each do |id|
-        found = all_items.detect { |item| item.id == id }
-        new_label.add_item(found)
+        found = @all_items.detect { |item| item.id == id }
+        new_label.add_item(found) unless found.nil?
       end
       @labels << new_label
     end
