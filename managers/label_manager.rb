@@ -56,7 +56,7 @@ class LabelManager
       new_label = Label.new(label['title'], label['color'], id: label['id'])
       label['items'].each do |id|
         found = @all_items.detect { |item| item.id == id }
-        new_label.add_item(found)
+        new_label.add_item(found) unless found.nil?
       end
       @labels << new_label
     end

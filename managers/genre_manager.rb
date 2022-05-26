@@ -54,7 +54,7 @@ class GenreManager
       new_genre = Genre.new(genre['name'], id: genre['id'])
       genre['items'].each do |id|
         found = @all_items.detect { |item| item.id == id }
-        new_genre.add_item(found)
+        new_genre.add_item(found) unless found.nil?
       end
       @genres << new_genre
     end

@@ -53,6 +53,15 @@ class App
     end
   end
 
+  def exit_app
+    @game_manager.store_games
+    @book_manager.save_books
+    @author_manager.store_authors
+    @genre_manager.save_genres
+    @music_album_manager.save_music_albums
+    @label_manager.save_labels
+  end
+
   def run
     puts 'Welcome to Catalog of my Things'
     loop do
@@ -68,7 +77,10 @@ class App
 10 - Exit"
       print "\nYour Choice: "
       choice = gets.chomp
-      break if choice == '10'
+      if choice == '10'
+        exit_app
+        break
+      end
 
       handle_choice(choice)
     end

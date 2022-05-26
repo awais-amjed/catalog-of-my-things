@@ -46,16 +46,16 @@ class AuthorManager
   end
 
   def store_authors
-    DataStorageHandler.save_data('author', @authors)
+    DataStorageHandler.save_data(@file_name, @authors)
   end
 
   def read_author
     authors = DataStorageHandler.read_data(@file_name)
     @authors = authors.map do |writer|
       author = Author.new(writer['first_name'], writer['last_name'])
-      write['items'].map do |item|
+      writer['items'].map do |item|
         find_item = @all_items.find { |i| i.id == item }
-        author.add_item(find_item)
+        author.add_item(find_item) unless find_item.nil?
       end
       author
     end
