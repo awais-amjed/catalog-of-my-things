@@ -1,0 +1,4 @@
+CREATE TABLE genre (
+    id INT GENERATED ALWAYS AS IDENTITY,
+    name VARCHAR(250),
+)
