@@ -1,5 +1,5 @@
 class Item
-  attr_accessor :publish_date
+  attr_accessor :publish_date, :label
   attr_reader :id, :genre, :source, :author, :label, :archived
 
   def initialize(publish_date, id = nil, archived: false)
@@ -22,11 +22,6 @@ class Item
 
   def add_author(author)
     @author << author
-  end
-
-  def add_label(label)
-    @label = label
-    label.items << self
   end
 
   def can_be_archived?

@@ -3,7 +3,7 @@ class Label
   attr_accessor :title, :color, :label
   attr_reader :items, :id
 
-  def initialise(_id, title, color, _items)
+  def initialise(title, color, items, id = nil)
     @id = id || rand(1...1000)
     @title = title
     @color = color
