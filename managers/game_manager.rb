@@ -8,6 +8,7 @@ class GameManager
 
   def initialize
     @games = []
+    @file_name = 'games'
   end
 
   def add_game(author_manager)
@@ -41,7 +42,7 @@ class GameManager
   end
 
   def read_games
-    games = JSON.parse(File.read('data/games.json')) if File.exist?('data/games.json')
+    games = DataStorageHandler.read_data(@file_name)
     @games = games.map do |game|
       Game.new(multi_player: game['multi_player'],
                last_played_at: game['last_played_at'],

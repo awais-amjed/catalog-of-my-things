@@ -7,6 +7,7 @@ class AuthorManager
   def initialize(all_items)
     @all_items = all_items
     @authors = []
+    @file_name = 'authors'
   end
 
   def add_author
@@ -29,9 +30,8 @@ class AuthorManager
     DataStorageHandler.save_data('author', @authors)
   end
 
-  # Items should be an array of objects
   def read_author
-    authors = JSON.parse(File.read('data/author.json')) if File.exist?('data/author.json')
+    authors = DataStorageHandler.read_data(@file_name)
     @authors = authors.map do |writer|
       author = Author.new(writer['first_name'], writer['last_name'])
       write['items'].map do |item|

@@ -10,6 +10,8 @@ module DataStorageHandler
   end
 
   def self.read_data(file_name)
-    JSON.parse(File.read("data/#{file_name}.json")) if File.exist?("data/#{file_name}.json")
+    return JSON.parse(File.read("data/#{file_name}.json")) if File.exist?("data/#{file_name}.json")
+
+    []
   end
 end
