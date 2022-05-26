@@ -6,7 +6,7 @@ class Author
     @first_name = first_name
     @last_name = last_name
     @items = []
-    @id = id || Random.rand
+    @id = id || Random.rand(1...1000)
   end
 
   def add_item(item)
@@ -15,11 +15,10 @@ class Author
   end
 
   def to_json(*_args)
-    i = @items.map(&:id)
     {
       id: @id,
       name: "#{@first_name} #{@last_name}",
-      items: i
+      items: @items.map(&:id)
     }.to_json
   end
 end
