@@ -1,6 +1,5 @@
-require_relative '../item'
 class Label
-  attr_accessor :title, :color, :label
+  attr_accessor :title, :color
   attr_reader :items, :id
 
   def initialize(title, color, id: nil)
@@ -13,5 +12,14 @@ class Label
   def add_item(item)
     @items << item
     item.label = self
+  end
+
+  def to_json(*_args)
+    {
+      id: @id,
+      title: @title,
+      color: @color,
+      items: @items.map(&:id)
+    }.to_json
   end
 end
