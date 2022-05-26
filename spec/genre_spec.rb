@@ -5,7 +5,7 @@ describe Genre do
   context 'Given a name' do
     it 'should create a Genre with the provided name' do
       name = 'Action'
-      genre = Genre.new(name)
+      genre = Genre.new(genrename)
 
       expect(genre.name).to eql(name)
       expect(genre.id).to_not be_nil
