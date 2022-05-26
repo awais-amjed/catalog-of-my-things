@@ -1,5 +1,6 @@
 require_relative '../classes/book'
 require_relative '../modules/date_handler'
+require_relative '../modules/input_module'
 
 class BookManager
   attr_reader :books
@@ -9,27 +10,27 @@ class BookManager
     @file_name = 'book'
   end
 
-  def add_book(label_manager)
+  def add_book(genre_manager, label_manager, author_manager)
     print 'Enter the publish date of the book (yyyy-mm-dd): '
     publish_date = gets.chomp
     begin
       DateHandler.from_string(publish_date)
     rescue ArgumentError
       puts 'Invalid Date! Try again'
-      add_book(label_manager)
+      add_book(genre_manager, label_manager, author_manager)
     end
     print 'Who is the Publisher of this book: '
     publisher = gets.chomp
     print 'How is the state of book cover: '
     cover_state = gets.chomp
-    label = label_manager.select_label
-    # TODO: Add selection of other properties (genre, source and author)
+    genre, label, author = InputModule.get_genre_label_author(genre_manager, label_manager, author_manager)
     new_book = Book.new(publisher, publish_date, cover_state)
     label.add_item(new_book)
-
-    # TODO: Add the other properties here
+    genre.add_item(new_book)
+    author.add_item(new_book)
     new_book.move_to_archive
     @books << new_book
+    puts 'Book added Successfully!'
   end
 
   def list_all_books

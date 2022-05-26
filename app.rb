@@ -24,11 +24,11 @@ class App
   def handle_add_methods(choice)
     case choice
     when '7'
-      @book_manager.add_book(@label_manager)
+      @book_manager.add_book(@genre_manager, @label_manager, @author_manager)
     when '8'
-      @music_album_manager.add_music_album(@genre_manager)
+      @music_album_manager.add_music_album(@genre_manager, @label_manager, @author_manager)
     when '9'
-      @game_manager.add_game(@author_manager)
+      @game_manager.add_game(@genre_manager, @label_manager, @author_manager)
     else
       puts '<-- Wrong Choice! Try again -->'
     end
