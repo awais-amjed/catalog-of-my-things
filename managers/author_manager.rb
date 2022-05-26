@@ -8,6 +8,8 @@ class AuthorManager
     @all_items = all_items
     @authors = []
     @file_name = 'authors'
+
+    read_author
   end
 
   def select_author

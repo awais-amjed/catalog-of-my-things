@@ -8,6 +8,8 @@ class LabelManager
     @all_items = all_items
     @labels = []
     @file_name = 'labels'
+
+    load_labels
   end
 
   def select_label

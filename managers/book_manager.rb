@@ -8,6 +8,8 @@ class BookManager
   def initialize
     @books = []
     @file_name = 'book'
+
+    load_books
   end
 
   def add_book(genre_manager, label_manager, author_manager)

@@ -10,6 +10,8 @@ class GameManager
   def initialize
     @games = []
     @file_name = 'games'
+
+    read_games
   end
 
   def add_game(genre_manager, label_manager, author_manager)

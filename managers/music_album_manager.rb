@@ -8,6 +8,8 @@ class MusicAlbumManager
   def initialize
     @music_albums = []
     @file_name = 'music_album'
+
+    load_music_albums
   end
 
   def add_music_album(genre_manager, label_manager, author_manager)

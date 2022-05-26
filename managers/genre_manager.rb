@@ -8,6 +8,8 @@ class GenreManager
     @all_items = all_items
     @genres = []
     @file_name = 'genres'
+
+    load_genres
   end
 
   def select_genre
