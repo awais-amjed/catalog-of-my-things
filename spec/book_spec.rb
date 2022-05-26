@@ -1,5 +1,5 @@
-require_relative '../book'
-require_relative '../date_handler'
+require_relative '../classes/book'
+require_relative '../modules/date_handler'
 
 describe Book do
   context 'Given a publisher, publish_date and cover state' do

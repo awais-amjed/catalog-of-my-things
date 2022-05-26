@@ -1,5 +1,5 @@
-require_relative '../music_album'
-require_relative '../date_handler'
+require_relative '../classes/music_album'
+require_relative '../modules/date_handler'
 
 describe MusicAlbum do
   context 'Given a publish_date' do

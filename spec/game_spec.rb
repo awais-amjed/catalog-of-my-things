@@ -1,5 +1,5 @@
-require_relative '../game'
-require_relative '../item'
+require_relative '../classes/game'
+require_relative '../classes/item'
 describe Game do
   it 'should initialize with an instance of game' do
     game = Game.new(multi_player: true, last_played_at: '2018-01-01', publish_date: '2018-01-01')
