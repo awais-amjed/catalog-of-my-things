@@ -32,7 +32,7 @@ class GameManager
   end
 
   def store_games
-    DataStorageHandler.save_data('game', @games)
+    DataStorageHandler.save_data(@file_name, @games)
   end
 
   def list_games
