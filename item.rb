@@ -7,8 +7,6 @@ class Item
     @id = id || Random.rand(1...1000)
     @publish_date = DateHandler.from_string(publish_date)
     @archived = archived
-    @source = []
-    @label = []
   end
 
   def can_be_archived?
