@@ -44,10 +44,10 @@ class BookManager
     data = DataStorageHandler.read_data(@file_name)
     data.each do |book|
       @books << Book.new(book['publisher'],
-                                book['publish_date'],
-                                book['cover_state'],
-                                id: book['id'],
-                                archived: book['archived'])
+                         book['publish_date'],
+                         book['cover_state'],
+                         id: book['id'],
+                         archived: book['archived'])
     end
   end
 end
