@@ -1,7 +1,7 @@
 require_relative './date_handler'
 class Item
-  attr_accessor :publish_date, :genre, :author,:source
-  attr_reader :id,:label, :archived
+  attr_accessor :publish_date, :genre, :author, :source
+  attr_reader :id, :label, :archived
 
   def initialize(publish_date:, id: nil, archived: false)
     @id = id || Random.rand(1...1000)
