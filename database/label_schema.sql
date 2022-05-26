@@ -1,6 +1,5 @@
 CREATE TABLE label (
-    id SERIAL PRIMARY KEY,
-    title VARCHAR(50),
+    id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    title VARCHAR(250),
     color VARCHAR(50),
-    items TEXT []
 );

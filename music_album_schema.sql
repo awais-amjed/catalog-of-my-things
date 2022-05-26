@@ -1,5 +1,5 @@
 CREATE TABLE music_album(
-    id INT GENERATED ALWAYS AS IDENTITY,
+    id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     publish_date DATE,
     on_spotify BOOL,
     archived BOOL,
