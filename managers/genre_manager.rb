@@ -20,7 +20,7 @@ class GenreManager
     choice = gets.chomp.to_i
     if choice.zero? || choice > @genres.length + 1
       puts 'Invalid choice! Try again'
-      select_genre
+      return select_genre
     end
     return add_genre if choice == @genres.length + 1
 

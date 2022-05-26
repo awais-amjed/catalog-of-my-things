@@ -20,7 +20,7 @@ class LabelManager
     choice = gets.chomp.to_i
     if choice.zero? || choice > @labels.length + 1
       puts 'Invalid choice! Try again'
-      select_label
+      return select_label
     end
     return add_label if choice == @labels.length + 1
 

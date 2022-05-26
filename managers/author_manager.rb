@@ -20,7 +20,7 @@ class AuthorManager
     choice = gets.chomp.to_i
     if choice.zero? || choice > @authors.length + 1
       puts 'Invalid choice! Try again'
-      select_author
+      return select_author
     end
     return add_author if choice == @authors.length + 1
 
