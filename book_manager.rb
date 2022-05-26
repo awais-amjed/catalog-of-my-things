@@ -23,11 +23,8 @@ class BookManager
     print 'How is the state of book cover: '
     cover_state = gets.chomp
     label = label_manager.select_label
-    # TODO: Add selection of other properties (genre, source and author)
     new_book = Book.new(publisher, publish_date, cover_state)
     label.add_item(new_book)
-
-    # TODO: Add the other properties here
     new_book.move_to_archive?
     @books << new_book
   end
