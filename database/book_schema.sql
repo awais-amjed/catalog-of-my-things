@@ -4,6 +4,8 @@ CREATE TABLE book (
     cover_state VARCHAR(4),
     publish_date DATE,
     archived BOOLEAN,
-    label_id SERIAL NOT NULL,
-    CONSTRAINT label_fk FOREIGN KEY (label_id) REFERENCES Label(id)
+    genre_id INT REFERENCES genre (id),
+    source_id INT REFERENCES source (id),
+    author_id INT REFERENCES author (id),
+    label_id INT REFERENCES label (id),
 );
