@@ -13,7 +13,7 @@ class AuthorManager
   end
 
   def select_author
-    puts 'Select an Author by number: '
+    puts "\nSelect an Author by number: "
     list_authors(show_index: true)
     puts "#{@authors.length + 1}) Add an Author"
     print "\nYour choice: "
@@ -40,7 +40,7 @@ class AuthorManager
   def list_authors(show_index: false)
     index = 1
     @authors.each do |author|
-      puts "#{"#{index}) " if show_index}#{author.to_json}"
+      puts "#{"#{index}) " if show_index}#{author.first_name} #{author.last_name}"
       index += 1
     end
   end

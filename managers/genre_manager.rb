@@ -13,7 +13,7 @@ class GenreManager
   end
 
   def select_genre
-    puts 'Select a Genre by number: '
+    puts "\nSelect a Genre by number: "
     list_all_genres(show_index: true)
     puts "#{@genres.length + 1}) Add a genre"
     print "\nYour choice: "

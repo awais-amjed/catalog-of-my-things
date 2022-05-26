@@ -37,7 +37,7 @@ class GameManager
 
   def list_games
     @games.each do |game|
-      puts game.to_json
+      puts game.show
     end
   end
 

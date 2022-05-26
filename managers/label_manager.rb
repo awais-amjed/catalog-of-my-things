@@ -13,7 +13,7 @@ class LabelManager
   end
 
   def select_label
-    puts 'Select a Label by number: '
+    puts "\nSelect a Label by number: "
     list_all_labels(show_index: true)
     puts "#{@labels.length + 1}) Add a label"
     print "\nYour choice: "
